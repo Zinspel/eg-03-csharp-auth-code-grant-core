@@ -43,7 +43,7 @@ namespace eg_03_csharp_auth_code_grant_core
             services.AddSingleton(config);
             services.AddScoped<IRequestItemsService, RequestItemsService>();
 
-            services.AddMvc(options => {;
+            services.AddMvc(options => {
                 options.Filters.Add<LocalsFilter>();
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
