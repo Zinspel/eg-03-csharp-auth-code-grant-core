@@ -10,7 +10,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
     [Route("eg004")]
     public class Eg004EnvelopeInfoController : EgController
     {
-        public Eg004EnvelopeInfoController(DSConfiguration config, IRequestItemsService requestItemsService) 
+        public Eg004EnvelopeInfoController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
         {
             ViewBag.title = "Get envelope information";
@@ -62,9 +62,9 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             }
 
             Envelope results = DoWork(accessToken, basePath, accountId, envelopeId);
-        
+
             ViewBag.h1 = "Get envelope status results";
-            ViewBag.message  = "Results from the Envelopes::get method:";
+            ViewBag.message = "Results from the Envelopes::get method:";
             ViewBag.Locals.Json = JsonConvert.SerializeObject(results, Formatting.Indented);
             return View("example_done");
         }

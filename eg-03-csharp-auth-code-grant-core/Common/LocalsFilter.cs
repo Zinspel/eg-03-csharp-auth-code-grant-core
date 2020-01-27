@@ -1,6 +1,4 @@
-﻿using DocuSign.eSign.Api;
-using DocuSign.eSign.Client;
-using eg_03_csharp_auth_code_grant_core.Models;
+﻿using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
@@ -30,7 +28,7 @@ namespace eg_03_csharp_auth_code_grant_core.Common
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-       
+
             Controller controller = context.Controller as Controller;
 
             if (controller == null)
@@ -69,7 +67,7 @@ namespace eg_03_csharp_auth_code_grant_core.Common
                     RefreshToken = identity.FindFirst(x => x.Type.Equals("refresh_token")).Value,
                     ExpireIn = DateTime.Parse(identity.FindFirst(x => x.Type.Equals("expires_in")).Value)
                 };
-                _requestItemsService.User = locals.User;                
+                _requestItemsService.User = locals.User;
             }
             if (locals.Session == null)
             {
@@ -80,8 +78,8 @@ namespace eg_03_csharp_auth_code_grant_core.Common
                     BasePath = identity.FindFirst(x => x.Type.Equals("base_uri")).Value
                 };
 
-                _requestItemsService.Session = locals.Session;                
-            }        
+                _requestItemsService.Session = locals.Session;
+            }
         }
     }
 }

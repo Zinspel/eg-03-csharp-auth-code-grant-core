@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
+using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Text;
-using DocuSign.eSign.Client;
+using System;
+using System.Collections.Generic;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {
@@ -110,7 +109,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
                 Locked = "true",
                 // Convert number to String: 'C2' sets the string 
                 // to currency format with two decimal places
-                Value = salary.ToString("C2"), 
+                Value = salary.ToString("C2"),
                 TabId = "salary",
                 TabLabel = "Salary"
             };
@@ -180,7 +179,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             EnvelopesApi envelopesApi = new EnvelopesApi(config);
             EnvelopeSummary results = envelopesApi.CreateEnvelope(accountId, envelopeAttributes);
             RequestItemsService.EnvelopeId = results.EnvelopeId;
- 
+
             // Step 6: Create the View Request
             RecipientViewRequest viewRequest = new RecipientViewRequest();
             // Set the URL where you want the recipient to go once they are done signing;

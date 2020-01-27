@@ -10,7 +10,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
     [Route("eg015")]
     public class Eg015EnvelopeTabDataController : EgController
     {
-        public Eg015EnvelopeTabDataController(DSConfiguration config, IRequestItemsService requestItemsService) 
+        public Eg015EnvelopeTabDataController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
         {
             ViewBag.title = "Get Envelope Tab Information";

@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
+using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 using System.Text;
-using DocuSign.eSign.Client;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {
     [Route("eg002")]
     public class Eg002SigningViaEmailController : EgController
     {
-        public Eg002SigningViaEmailController(DSConfiguration config, IRequestItemsService requestItemsService) 
+        public Eg002SigningViaEmailController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
         {
             ViewBag.title = "Signing request by email";
@@ -65,7 +65,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             // read files from a local directory
             // The reads could raise an exception if the file is not available!
             string doc2DocxBytes = Convert.ToBase64String(System.IO.File.ReadAllBytes(Config.docDocx));
-            string doc3PdfBytes = Convert.ToBase64String(System.IO.File.ReadAllBytes(Config.docPdf)); 
+            string doc3PdfBytes = Convert.ToBase64String(System.IO.File.ReadAllBytes(Config.docPdf));
             // create the envelope definition
             EnvelopeDefinition env = new EnvelopeDefinition();
             env.EmailSubject = "Please sign this document set";
@@ -77,7 +77,8 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             doc1.Name = "Order acknowledgement"; // can be different from actual file name
             doc1.FileExtension = "html"; // Source data format. Signed docs are always pdf.
             doc1.DocumentId = "1"; // a label used to reference the doc
-            Document doc2 = new Document {
+            Document doc2 = new Document
+            {
                 DocumentBase64 = doc2DocxBytes,
                 Name = "Battle Plan", // can be different from actual file name
                 FileExtension = "docx",
@@ -91,11 +92,12 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
                 DocumentId = "3"
             };
             // The order in the docs array determines the order in the envelope
-            env.Documents =  new List<Document> { doc1, doc2, doc3};
+            env.Documents = new List<Document> { doc1, doc2, doc3 };
 
             // create a signer recipient to sign the document, identified by name and email
             // We're setting the parameters via the object creation
-            Signer signer1 = new Signer {
+            Signer signer1 = new Signer
+            {
                 Email = signerEmail,
                 Name = signerName,
                 RecipientId = "1",
@@ -138,10 +140,11 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
                 AnchorYOffset = "10",
                 AnchorXOffset = "20"
             };
-            
+
             // Tabs are set per recipient / signer
-            Tabs signer1Tabs = new Tabs {
-                SignHereTabs = new List<SignHere> { signHere1, signHere2}
+            Tabs signer1Tabs = new Tabs
+            {
+                SignHereTabs = new List<SignHere> { signHere1, signHere2 }
             };
             signer1.Tabs = signer1Tabs;
 

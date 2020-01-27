@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
 using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Controllers;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace eg_03_csharp_auth_code_grant_core.Views
 {
@@ -18,9 +18,9 @@ namespace eg_03_csharp_auth_code_grant_core.Views
 
         public Eg001EmbeddedSigningController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
-        {            
+        {
             dsPingUrl = config.AppUrl + "/";
-            dsReturnUrl = config.AppUrl + "/dsReturn";           
+            dsReturnUrl = config.AppUrl + "/dsReturn";
             ViewBag.title = "Embedded Signing Ceremony";
         }
 
@@ -119,7 +119,7 @@ namespace eg_03_csharp_auth_code_grant_core.Views
 
 
             byte[] buffer = System.IO.File.ReadAllBytes(Config.docPdf);
-       
+
             EnvelopeDefinition envelopeDefinition = new EnvelopeDefinition();
             envelopeDefinition.EmailSubject = "Please sign this document";
             Document doc1 = new Document();
@@ -137,13 +137,14 @@ namespace eg_03_csharp_auth_code_grant_core.Views
             // Create a signer recipient to sign the document, identified by name and email
             // We set the clientUserId to enable embedded signing for the recipient
             // We're setting the parameters via the object creation
-            Signer signer1 = new Signer {
+            Signer signer1 = new Signer
+            {
                 Email = signerEmail,
                 Name = signerName,
                 ClientUserId = signerClientId,
                 RecipientId = "1"
             };
-           
+
             // Create signHere fields (also known as tabs) on the documents,
             // We're using anchor (autoPlace) positioning
             //

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
 using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {
@@ -52,7 +52,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             // signerName
             // ccEmail
             // ccName
-            
+
 
             // document 1 (html) has multiple tags:
             // /l1q/ and /l2q/ -- quantities: drop down

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
+using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Text;
-using DocuSign.eSign.Client;
+using System.Collections.Generic;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {

@@ -1,9 +1,6 @@
-﻿using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
-using eg_03_csharp_auth_code_grant_core.Models;
-using Microsoft.AspNetCore.Authorization;
-using eg_03_csharp_auth_code_grant_core.Common;
+using System.Diagnostics;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {
@@ -36,7 +33,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
 
         [Route("/dsReturn")]
         public IActionResult DsReturn(string state, string @event, string envelopeId)
-        {            
+        {
             ViewBag.title = "Return from DocuSign";
             ViewBag._event = @event;
             ViewBag.state = state;

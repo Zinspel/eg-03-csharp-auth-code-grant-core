@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
 using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 using static DocuSign.eSign.Api.EnvelopesApi;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
@@ -15,12 +12,12 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
     [Route("eg003")]
     public class Eg003ListEnvelopesController : EgController
     {
-        public Eg003ListEnvelopesController(DSConfiguration config, IRequestItemsService requestItemsService) 
+        public Eg003ListEnvelopesController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
         {
             ViewBag.title = "List envelopes";
         }
-   
+
         public override string EgName => "eg003";
 
         // ***DS.snippet.0.start
@@ -49,7 +46,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             string accessToken = RequestItemsService.User.AccessToken;
             string basePath = RequestItemsService.Session.BasePath + "/restapi";
             string accountId = RequestItemsService.Session.AccountId;
-            
+
             // Check the token with minimal buffer time.
             bool tokenOk = CheckToken(3);
             if (!tokenOk)
@@ -68,7 +65,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             // Process results
             ViewBag.h1 = "List envelopes results";
             ViewBag.message = "Results from the Envelopes::listStatusChanges method:";
-            ViewBag.Locals.Json = JsonConvert.SerializeObject(results,Formatting.Indented);
+            ViewBag.Locals.Json = JsonConvert.SerializeObject(results, Formatting.Indented);
             return View("example_done");
         }
     }

@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
 using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {
     [Route("eg009")]
     public class Eg009UseTemplateController : EgController
     {
-        public Eg009UseTemplateController(DSConfiguration config, IRequestItemsService requestItemsService) 
+        public Eg009UseTemplateController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
         {
         }
@@ -21,7 +18,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
         public override string EgName => "eg009";
 
         // ***DS.snippet.0.start
-        string DoWork (string signerEmail, string signerName, string ccEmail,
+        string DoWork(string signerEmail, string signerName, string ccEmail,
             string ccName, string accessToken, string basePath,
             string accountId, string templateId)
         {
@@ -43,7 +40,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             return result.EnvelopeId;
         }
 
-        private EnvelopeDefinition MakeEnvelope(string signerEmail, string signerName, 
+        private EnvelopeDefinition MakeEnvelope(string signerEmail, string signerName,
             string ccEmail, string ccName, string templateId)
         {
             // Data for this method
@@ -58,7 +55,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
 
             TemplateRole signer1 = new TemplateRole();
             signer1.Email = signerEmail;
-            signer1.Name =  signerName;
+            signer1.Name = signerName;
             signer1.RoleName = "signer";
 
             TemplateRole cc1 = new TemplateRole();

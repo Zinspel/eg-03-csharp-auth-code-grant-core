@@ -1,17 +1,17 @@
-using System;
-using System.Collections.Generic;
 using DocuSign.eSign.Api;
 using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {
     [Route("eg008")]
     public class Eg008CreateTemplateController : EgController
     {
-        public Eg008CreateTemplateController(DSConfiguration config, IRequestItemsService requestItemsService) 
+        public Eg008CreateTemplateController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
         {
             ViewBag.title = "Create a template";
@@ -56,7 +56,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             {
                 // No template! Create one!
                 EnvelopeTemplate templateReqObject = MakeTemplate(templateName);
-                
+
                 TemplateSummary template = templatesApi.CreateTemplate(accountId, templateReqObject);
 
                 // Retrieve the new template Name / TemplateId
@@ -67,7 +67,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
 
             }
 
-            return (createdNewTemplate: createdNewTemplate, 
+            return (createdNewTemplate: createdNewTemplate,
                 templateId: templateId, resultsTemplateName: resultsTemplateName);
         }
 
@@ -215,7 +215,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             signer1Tabs.ListTabs = new List<List> { list1 };
             // numberTabs: [number],
             signer1Tabs.RadioGroupTabs = new List<RadioGroup> { radioGroup };
-            signer1Tabs.SignHereTabs = new List<SignHere> { signHere};
+            signer1Tabs.SignHereTabs = new List<SignHere> { signHere };
             signer1Tabs.TextTabs = new List<Text> { text, textInsteadOfNumber };
 
             signer1.Tabs = signer1Tabs;
@@ -225,13 +225,13 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             recipients.Signers = new List<Signer> { signer1 };
             recipients.CarbonCopies = new List<CarbonCopy> { cc1 };
 
-           
+
             // create the overall template definition
             EnvelopeTemplate template = new EnvelopeTemplate();
             // The order in the docs array determines the order in the env
             template.Description = "Example template created via the API";
             template.Name = resultsTemplateName;
-            template.Documents = new List<Document> { doc};
+            template.Documents = new List<Document> { doc };
             template.EmailSubject = "Please sign this document";
             template.Recipients = recipients;
             template.Status = "created";

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using eg_03_csharp_auth_code_grant_core.Models;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
-using eg_03_csharp_auth_code_grant_core.Models;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {

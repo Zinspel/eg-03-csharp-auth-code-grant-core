@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
 using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {
@@ -14,7 +14,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
     {
         private string signerClientId = "1000";
 
-        public Eg013AddDocToTemplateController(DSConfiguration config, IRequestItemsService requestItemsService) 
+        public Eg013AddDocToTemplateController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
         {
         }
@@ -57,7 +57,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
         }
 
 
-        private RecipientViewRequest MakeRecipientViewRequest(string signerEmail, string signerName, 
+        private RecipientViewRequest MakeRecipientViewRequest(string signerEmail, string signerName,
             string dsReturnUrl)
         {
             // Data for this method
@@ -90,7 +90,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             return viewRequest;
         }
 
-        private EnvelopeDefinition MakeEnvelope(string signerEmail, string signerName, string ccEmail, 
+        private EnvelopeDefinition MakeEnvelope(string signerEmail, string signerName, string ccEmail,
             string ccName, string item, string quantity)
         {
             // Data for this method
@@ -189,7 +189,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
 
             // create the HTML document
             Document doc1 = new Document();
-            
+
             String doc1b64 = Convert.ToBase64String(document1(signerEmail, signerName, ccEmail, ccName, item, quantity));
             doc1.DocumentBase64 = doc1b64;
             doc1.Name = "Appendix 1--Sales order"; // can be different from actual file name
@@ -206,7 +206,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
                 Sequence = "2",
                 Recipients = recipientsAddedDoc
             };
-            compTemplate2.InlineTemplates = new List<InlineTemplate> { inlineTemplate2};
+            compTemplate2.InlineTemplates = new List<InlineTemplate> { inlineTemplate2 };
             compTemplate2.Document = doc1;
 
             EnvelopeDefinition env = new EnvelopeDefinition
@@ -218,7 +218,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             return env;
         }
 
-        private byte[] document1(string signerEmail, string signerName, string ccEmail, string ccName, 
+        private byte[] document1(string signerEmail, string signerName, string ccEmail, string ccName,
             string item, string quantity)
         {
             // Data for this method

@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
 using DocuSign.eSign.Client;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {
     [Route("eg007")]
     public class Eg007EnvelopeGetDocController : EgController
     {
-        public Eg007EnvelopeGetDocController(DSConfiguration config, IRequestItemsService requestItemsService) 
+        public Eg007EnvelopeGetDocController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
         {
             ViewBag.title = "Download a document";

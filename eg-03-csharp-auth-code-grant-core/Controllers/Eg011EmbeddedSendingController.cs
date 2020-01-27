@@ -1,9 +1,9 @@
-﻿using System;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
 using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {
@@ -12,7 +12,7 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
     {
         private Eg002SigningViaEmailController controller2;
 
-        public Eg011EmbeddedSendingController(DSConfiguration config, IRequestItemsService requestItemsService) 
+        public Eg011EmbeddedSendingController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
         {
             ViewBag.title = "Embedded Sending";
@@ -92,9 +92,9 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
                 return Redirect("/ds/mustAuthenticate");
             }
 
-            string redirectUrl = DoWork(signerEmail,  signerName,  ccEmail,
-                ccName,  accessToken,  basePath,
-                accountId,  startingView,  dsReturnUrl);
+            string redirectUrl = DoWork(signerEmail, signerName, ccEmail,
+                ccName, accessToken, basePath,
+                accountId, startingView, dsReturnUrl);
 
             Console.WriteLine("Sender view URL: " + redirectUrl);
             return Redirect(redirectUrl);

@@ -25,25 +25,25 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
             // to have the user authenticate or re-authenticate.
             bool tokenOk = CheckToken();
 
-            
+
             if (tokenOk)
-            {               
+            {
                 //addSpecialAttributes(model);
                 ViewBag.envelopeOk = RequestItemsService.EnvelopeId != null;
                 ViewBag.documentsOk = RequestItemsService.EnvelopeDocuments != null;
-                ViewBag.documentOptions = RequestItemsService.EnvelopeDocuments != null? 
-                    RequestItemsService.EnvelopeDocuments.Documents: null;
+                ViewBag.documentOptions = RequestItemsService.EnvelopeDocuments != null ?
+                    RequestItemsService.EnvelopeDocuments.Documents : null;
                 ViewBag.gatewayOk = Config.GatewayAccountId != null && Config.GatewayAccountId.Length > 25;
                 ViewBag.templateOk = RequestItemsService.TemplateId != null;
                 ViewBag.source = CreateSourcePath();
                 ViewBag.documentation = Config.documentation + EgName;
                 ViewBag.showDoc = Config.documentation != null;
-                
+
                 return View(EgName);
             }
 
             RequestItemsService.EgName = EgName;
-                        
+
             return Redirect("/ds/mustAuthenticate");
         }
 
@@ -54,8 +54,8 @@ namespace eg_03_csharp_auth_code_grant_core.Controllers
         }
 
         protected bool CheckToken(int bufferMin = 60)
-        {            
-            return HttpContext.User.Identity.IsAuthenticated 
+        {
+            return HttpContext.User.Identity.IsAuthenticated
                 && (DateTime.Now.Subtract(TimeSpan.FromMinutes(bufferMin)) <
                 RequestItemsService.User.ExpireIn.Value);
         }

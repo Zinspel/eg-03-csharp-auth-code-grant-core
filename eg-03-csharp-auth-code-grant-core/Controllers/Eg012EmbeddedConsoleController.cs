@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DocuSign.eSign.Api;
+﻿using DocuSign.eSign.Api;
 using DocuSign.eSign.Client;
 using DocuSign.eSign.Model;
 using eg_03_csharp_auth_code_grant_core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace eg_03_csharp_auth_code_grant_core.Controllers
 {
     [Route("eg012")]
     public class Eg012EmbeddedConsoleController : EgController
     {
-        public Eg012EmbeddedConsoleController(DSConfiguration config, IRequestItemsService requestItemsService) 
+        public Eg012EmbeddedConsoleController(DSConfiguration config, IRequestItemsService requestItemsService)
             : base(config, requestItemsService)
         {
         }
